@@ -14,7 +14,7 @@ function Profile() {
   const { disconnect } = useDisconnect();
   const { chain, chains } = useNetwork();
 
-  console.log(connector)
+  // console.log(connector)
 
   if (isConnected)
     return (

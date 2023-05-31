@@ -20,10 +20,9 @@ export function Test(props) {
 
   }, [])
 
-  console.log(contract.data == props.address)
+  // console.log(contract.data == props.address)
   return (
     <div style={{color: 'white', display: "flex"}}>
-      
       
     </div>
   )
