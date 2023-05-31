@@ -20,14 +20,16 @@ function Profile() {
   if (isConnected)
     return (
       <div style={{color: "white", display: "flex", flexDirection: "column", justifyContent: 'center', alignItems: 'center'}}>
-        <>
-          {chain && <div>Connected to {chain.name}</div>}
-          {chains && (
-            <div>Available chains: {chains.map((chain) => chain.name)}</div>
-          )}
-        </>
-        Account: {address}
-        <button style={{minWidth: 100}} onClick={() => disconnect()}>Disconnect</button>
+        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100vw', backgroundColor: '#222222', paddingBottom: 10}}>
+          <div style={{justifyContent: 'start'}}>
+            {chain && <div>Connected to {chain.name}</div>}
+            {chains && (
+              <div>Available chains: {chains.map((chain) => chain.name)}</div>
+            )}
+          </div>
+          Account: {address}
+          <button style={{minWidth: 100, height: 40}} onClick={() => disconnect()}>Disconnect</button>
+        </div>
         <ShowNFT address={address} update={setOnMint}></ShowNFT>
         <MintNFT address={address} refresh={onMint}></MintNFT>
         <Test address={address}></Test>
