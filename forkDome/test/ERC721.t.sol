@@ -51,17 +51,56 @@ contract ERC721Test is Test {
       forkDome.mint(sofia, "six");
 
       emit log(Strings.toString(forkDome.getTokenURIByOwner(sofia, 0).length));
-      emit log(Strings.toString(forkDome.getTokenURIByOwner(sofia, 1).length));
 
       for (uint256 i = 0; i < forkDome.getTokenURIByOwner(sofia, 0).length; i++) {
         emit log(forkDome.getTokenURIByOwner(sofia, 0)[i]);
       }
-       for (uint256 i = 0; i < forkDome.getTokenURIByOwner(sofia, 1).length; i++) {
+
+      // for (uint256 i = 0; i < forkDome.getTokenURIByOwner(sofia, 0).length; i++) {
+      //   emit log(forkDome.getTokenURIByOwner(sofia, 0)[i]);
+      // }
+      //  for (uint256 i = 0; i < forkDome.getTokenURIByOwner(sofia, 1).length; i++) {
+      //   emit log(forkDome.getTokenURIByOwner(sofia, 1)[i]);
+      // }
+      // for (uint256 i = 0; i < forkDome.getTokenURIByOwner(sofia, 2).length; i++) {
+      //   emit log(forkDome.getTokenURIByOwner(sofia, 2)[i]);
+      // }
+
+      forkDome.mint(sofia, "seven");
+      forkDome.mint(sofia, "eight");
+      forkDome.mint(noah, "nine");
+      forkDome.mint(sofia, "ten");
+      forkDome.mint(sofia, "eleven");
+      forkDome.mint(sofia, "twelve");
+      forkDome.mint(sofia, "thirteen");
+      forkDome.mint(sofia, "fourteen");
+      forkDome.mint(sofia, "fifteen");
+
+      for (uint256 i = 0; i < forkDome.getTokenURIByOwner(sofia, 0).length; i++) {
+        emit log(forkDome.getTokenURIByOwner(sofia, 0)[i]);
+      }      
+      for (uint256 i = 0; i < forkDome.getTokenURIByOwner(sofia, 1).length; i++) {
         emit log(forkDome.getTokenURIByOwner(sofia, 1)[i]);
       }
-            for (uint256 i = 0; i < forkDome.getTokenURIByOwner(sofia, 2).length; i++) {
+      for (uint256 i = 0; i < forkDome.getTokenURIByOwner(sofia, 2).length; i++) {
         emit log(forkDome.getTokenURIByOwner(sofia, 2)[i]);
       }
+
+      for (uint256 i = 0; i < forkDome.getTokenURIByOwner(sofia, 3).length; i++) {
+        emit log(forkDome.getTokenURIByOwner(sofia, 3)[i]);
+      }
+
+      forkDome.mint(noah, "sixteen");
+      forkDome.mint(noah, "seventeen");
+      forkDome.mint(noah, "eightteen");
+
+      for (uint256 i = 0; i < forkDome.getTokenURIByOwner(noah, 0).length; i++) {
+        emit log(forkDome.getTokenURIByOwner(noah, 0)[i]);
+      }
+
+      // for (uint256 i = 0; i < forkDome.getTokenURIByOwner(noah, 1).length; i++) {
+      //   emit log(forkDome.getTokenURIByOwner(noah, 1)[i]);
+      // }
 
       assertEq("zero", forkDome.getTokenURIByOwner(sofia, 0)[0]);
       assertEq("one", forkDome.getTokenURIByOwner(sofia, 0)[1]);

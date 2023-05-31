@@ -9,7 +9,6 @@ contract ForkDome is ERC721URIStorage {
     Counters.Counter private _tokenIds;
 
     uint private constant maxPage = 10;
-    // string[] private tokenURIs;
 
     constructor() ERC721("ForkDome", "FDM") {}
 
@@ -17,21 +16,18 @@ contract ForkDome is ERC721URIStorage {
         uint256 newItemId = _tokenIds.current();
         _mint(user, newItemId);
         _setTokenURI(newItemId, tokenURI);
-
-        // tokenURIs.push(tokenURI);
         
         _tokenIds.increment();
         return newItemId;
     }
 
-    function getTokenURIByOwner(address user, uint page) public view returns (string[maxPage] memory) {
+    function getTokenURIByOwner(address user, int page) public view returns (string[maxPage] memory) {
         string[maxPage] memory tokens;
         uint count = 0;
-        uint curPage = 0;
+        int curPage = 0;
 
         for (uint i = 0; i < _tokenIds.current(); i++) {
             if (ownerOf(i) == user) {
-                // tokens.push(tokenURIs[i]);
                 tokens[count] = tokenURI(i);
                 count++;
                 if (count >= maxPage) {
@@ -40,11 +36,22 @@ contract ForkDome is ERC721URIStorage {
                     } else {
                         curPage++;
                         count = 0;
+                        for (uint j = 0; j < maxPage; j++) {
+                            tokens[j] = "";
+                        }
                     }
                 }
             } 
         }
-        return tokens;
+        
+        if (curPage > page-1) {
+            return tokens;
+        } else {
+            for (uint j = 0; j < maxPage; j++) {
+                tokens[j] = "";
+            }
+            return tokens;
+        }
     }
     
 }

@@ -10,17 +10,17 @@ import forkDome from "../abi/ForkDome.json"
 export function Test(props) {
 
   const contract = useContractRead({
-    address: '0x7708D665C0403a2063B6bE0E31235A2ec802f1E7',
+    address: '0x1c7d4305a4481bdd5832ecf7130a78f11fcf8925',
     abi: forkDome.abi,
     functionName: 'ownerOf',
-    args: [3],
+    args: [0],
   })
   
   React.useEffect(() => {
 
   }, [])
 
-  console.log(contract.data)
+  console.log(contract.data == props.address)
   return (
     <div style={{color: 'white', display: "flex"}}>
       

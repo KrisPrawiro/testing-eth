@@ -3,6 +3,7 @@ import { InjectedConnector } from 'wagmi/connectors/injected'
 import { MintNFT } from './MintNFT'
 import { ShowNFT } from './ShowNFT'
 import { Test } from './Test'
+import { useState } from 'react'
 
 function Profile() {
   const { address, isConnected, connector } = useAccount()
@@ -11,6 +12,8 @@ function Profile() {
   })
   const { disconnect } = useDisconnect()
   const { chain, chains } = useNetwork()
+
+  const {onMint, setOnMint} = useState(() => {});
 
   console.log(connector)
 
@@ -25,8 +28,8 @@ function Profile() {
         </>
         Account: {address}
         <button style={{minWidth: 100}} onClick={() => disconnect()}>Disconnect</button>
-        <ShowNFT address={address}></ShowNFT>
-        <MintNFT address={address}></MintNFT>
+        <ShowNFT address={address} update={setOnMint}></ShowNFT>
+        <MintNFT address={address} refresh={onMint}></MintNFT>
         <Test address={address}></Test>
       </div>
     )
