@@ -12,7 +12,7 @@ export function MintNFT(props) {
   const [tokenURI, setTokenURI] = React.useState('');
   const [mint, setMint] = React.useState(false);
   
-  const { config } = usePrepareContractWrite({
+  const { config , error} = usePrepareContractWrite({
     address: '0x1c7d4305a4481bdd5832ecf7130a78f11fcf8925',
     abi: forkDome.abi,
     functionName: 'mint',
@@ -30,6 +30,7 @@ export function MintNFT(props) {
     console.log(data)
     console.log(config)
     console.log(props.address);
+    console.log(error);
     if (mint && write) {
       setTimeout(() => {write()}, 1000);
       setMint(false);
