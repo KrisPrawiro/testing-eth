@@ -25,35 +25,29 @@ export function MintNFT(props) {
   })
 
   React.useEffect(() => {
-    console.log(tokenURI)
-    if (mint) {
+    if (mint && write) {
       setTimeout(() => {write()}, 1000);
       setMint(false);
     }
   }, [tokenURI])
 
-  React.useEffect(() => {
-    if (isSuccess) {
-      // console.log(props.refresh);
-      // props.refresh();
-    }
-  }, [isSuccess])
-
   return (
     <div>
-      <button disabled={!write || isLoading} onClick={() => {
-        let random = Math.floor(Math.random() * images.length);
-        setTokenURI(images[random]); 
-        setMint(true);
-        // write({})
-      }}>
+      <button disabled={!write || isLoading} 
+        onClick={() => {
+          let random = Math.floor(Math.random() * images.length);
+          setTokenURI(images[random]); 
+          setMint(true);
+        }}
+        style={{padding: '5px 10px', }}
+      >
         {isLoading ? 'Minting...' : 'Mint'}
       </button>
       {isSuccess && (
         <div>
           Successfully minted your NFT!
           <div>
-            <a href={`https://etherscan.io/tx/${data?.hash}`}>Etherscan</a>
+            <a href={`https://goerli.etherscan.io/tx/${data?.hash}`}>Etherscan</a>
           </div>
         </div>
       )}

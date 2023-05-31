@@ -7,6 +7,7 @@ import {
 } from 'wagmi';
 import forkDome from "../abi/ForkDome.json";
 import './ShowNFT.css';
+import { MintNFT } from './MintNFT';
 
 export function ShowNFT(props) {
   const [tokens, setTokens] = React.useState([]);
@@ -29,7 +30,7 @@ export function ShowNFT(props) {
         allTokens = tokens;
       }
       allTokens = allTokens.concat(contract.data);
-      if (contract.data[9] != "") {
+      if (contract.data && contract.data[9] != "") {
         setCurPage(curPage + 1);
         // contract.refetch();
       } else {
@@ -59,7 +60,7 @@ export function ShowNFT(props) {
         {tokens && tokens.map((e, index) => {
           if (e != '') {
             return (
-              <div key={index} className='card' style={{position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: 5, backgroundColor: '#222222', borderRadius: 5, margin: '5px 5px', animationDelay: (index * 0.1) + 's'}}> 
+              <div key={index} className='card' style={{animationDelay: (index * 0.1) + 's'}}> 
                 <img src={e} style={{width: 200, marginBottom: 5}}></img>
                 <div style={{}}>
                   NFT {index + 1}
@@ -68,7 +69,13 @@ export function ShowNFT(props) {
             )
           }
         })}
-        
+        {tokens.length > 0 && 
+          <div className='card' style={{ animationDelay: (tokens.length * 0.1) + 's'}}> 
+            <div style={{width: 200, height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+              <MintNFT address={props.address}></MintNFT>
+            </div>
+          </div>
+        }
       </div>
     </div>
   )
