@@ -26,6 +26,7 @@ export function MintNFT(props) {
 
   React.useEffect(() => {
     console.log(isLoading)
+    console.log(write)
     if (mint && write) {
       setTimeout(() => {write()}, 1000);
       setMint(false);
@@ -34,7 +35,7 @@ export function MintNFT(props) {
 
   return (
     <div>
-      <button disabled={!write || isLoading} 
+      <button disabled={isLoading} 
         onClick={() => {
           let random = Math.floor(Math.random() * images.length);
           setTokenURI(images[random]); 
