@@ -29,6 +29,7 @@ export function MintNFT(props) {
     console.log(write)
     console.log(data)
     console.log(config)
+    console.log(props.address);
     if (mint && write) {
       setTimeout(() => {write()}, 1000);
       setMint(false);
