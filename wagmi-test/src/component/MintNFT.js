@@ -17,7 +17,7 @@ export function MintNFT(props) {
     abi: forkDome.abi,
     functionName: 'mint',
     args: [props.address, tokenURI],
-    chainId: 5,
+    // chainId: 5,
     onSettled(data, error) {
       console.log('Settled', { data, error })
     },
