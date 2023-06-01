@@ -30,10 +30,10 @@ export function MintNFT(props) {
   })
 
   React.useEffect(() => {
-    // console.log(isLoading)
-    // console.log(write)
-    // console.log(data)
-    // console.log(config)
+    console.log(isLoading)
+    console.log(write)
+    console.log(data)
+    console.log(config)
     if (mint && write) {
       setTimeout(() => {write()}, 1000);
       setMint(false);
