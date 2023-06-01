@@ -21,6 +21,7 @@ export function MintNFT(props) {
     onSettled(data, error) {
       console.log('Settled', { data, error })
     },
+    enabled: true
   })
   const { data, write } = useContractWrite(config)
 
