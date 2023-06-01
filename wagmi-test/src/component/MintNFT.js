@@ -18,8 +18,8 @@ export function MintNFT(props) {
     functionName: 'mint',
     args: [props.address, tokenURI],
     // chainId: 5,
-    onSettled(data, error) {
-      console.log('Settled', { data, error })
+    onError(error) {
+      console.log('Error: ', { error })
     },
     enabled: true
   })
@@ -30,17 +30,10 @@ export function MintNFT(props) {
   })
 
   React.useEffect(() => {
-    console.log(isLoading)
-    console.log(write)
-    console.log(data)
-    console.log(config)
-    console.log(props.address);
-    console.log({
-      address: '0x1c7d4305a4481bdd5832ecf7130a78f11fcf8925',
-      abi: forkDome.abi,
-      functionName: 'mint',
-      args: [props.address, tokenURI]
-    })
+    // console.log(isLoading)
+    // console.log(write)
+    // console.log(data)
+    // console.log(config)
     if (mint && write) {
       setTimeout(() => {write()}, 1000);
       setMint(false);
