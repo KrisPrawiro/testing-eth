@@ -12,11 +12,15 @@ export function MintNFT(props) {
   const [tokenURI, setTokenURI] = React.useState('');
   const [mint, setMint] = React.useState(false);
   
-  const { config , error} = usePrepareContractWrite({
+  const { config , onSettled} = usePrepareContractWrite({
     address: '0x1c7d4305a4481bdd5832ecf7130a78f11fcf8925',
     abi: forkDome.abi,
     functionName: 'mint',
-    args: [props.address, tokenURI]
+    args: [props.address, tokenURI],
+    chainId: 5,
+    onSettled(data, error) {
+      console.log('Settled', { data, error })
+    },
   })
   const { data, write } = useContractWrite(config)
 
@@ -30,7 +34,6 @@ export function MintNFT(props) {
     console.log(data)
     console.log(config)
     console.log(props.address);
-    console.log(error);
     console.log({
       address: '0x1c7d4305a4481bdd5832ecf7130a78f11fcf8925',
       abi: forkDome.abi,
@@ -45,7 +48,7 @@ export function MintNFT(props) {
 
   return (
     <div>
-      <button disabled={isLoading} 
+      <button disabled={isLoading || !write} 
         onClick={() => {
           let random = Math.floor(Math.random() * images.length);
           setTokenURI(images[random]); 
