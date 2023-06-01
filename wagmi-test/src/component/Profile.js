@@ -5,6 +5,7 @@ import { ShowNFT } from './ShowNFT'
 import { Test } from './Test'
 import { useState } from 'react'
 import './Profile.css';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 function Profile() {
   const { address, isConnected, connector } = useAccount();
@@ -13,8 +14,6 @@ function Profile() {
   });
   const { disconnect } = useDisconnect();
   const { chain, chains } = useNetwork();
-
-  console.log(connector)
 
   if (isConnected)
     return (
@@ -37,7 +36,12 @@ function Profile() {
         <Test address={address}></Test>
       </div>
     )
-    return <button onClick={() => connect()}>Connect Wallet</button>
+    return (
+      <div style={{display: 'flex', justifyContent: 'center', paddingTop: '20px'}}>
+        <ConnectButton></ConnectButton>
+        {/* <button onClick={() => connect()}>Connect Wallet</button> */}
+      </div>
+    )
 }
 
 export default Profile;

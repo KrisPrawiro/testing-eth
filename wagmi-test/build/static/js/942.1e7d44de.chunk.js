@@ -1,0 +1,1 @@
+(self.webpackChunkwagmi_test=self.webpackChunkwagmi_test||[]).push([[942],{24654:()=>{},52361:()=>{},94616:()=>{}}]);
